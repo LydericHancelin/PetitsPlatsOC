@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <link href="css/main.min.css" rel="stylesheet" type="text/css" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,minimum-scale=1">
+  <meta name="description" content="Les petits plats, site de recettes.">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
+  <title>Les petits plats</title>
+</head>
+
+<body>
+  <header>
+    <a href="/">
+        <img src="assets/images/logo.svg" class="logo" alt="Logo"/>
+        <h1>Les petits plats</h1>
+    </a>
+  </header>
+  <main id="main">
+    <div class="search">
+      <label for="search"></label>
+      <input type="text" id="search" name="search" required minlength="4" maxlength="8" size="10" placeholder="Rechercher une recette">
+      <img src="assets/images/loupe.svg" class="loupe_img" alt="Loupe"/>
+    </div>
+    <div class="filters">
+      <span class="custom_selector"><input type="search" id="ingredients" value="Ingrediants"></span>
+      <span class="custom_selector"><input type="search" id="appareils" value="Appareils"></span>
+      <span class="custom_selector"><input type="search" id="ustensiles" value="Ustensiles"></span>
+    </div>
+    <div class="grid-cards">
+      <div class="card">
+        <div class="picture"></div>
+        <div class="recette">
+          <div class="title">
+            <h1>Limonade de Coco</h1>
+            <span>
+              <img src="assets/images/timer.svg" class="timer_img" alt="Timer"/>
+              10min
+            </span>
+          </div>
+          <div class="text">
+            <ul class="ingrediants">
+              <li>Lait de coco: 400ml</li>
+              <li>Jus de citron: 2</li>
+              <li>Créme de coco: 4 cuillères</li>
+              <li>Sucre: 20g</li>
+              <li>Glaçons: 2</li>
+            </ul>
+            <div class="desc">
+              Découper le poulet en morceaux, les faire dorer dans une cocotte avec de l'huile d'olive.
+              Salez et poivrez. Une fois doré, laisser cuire en ajoutant de l'eau.
+              Au bout de 30 minutes, ajouter le coulis de tomate, ...
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="picture"></div>
+        <div class="recette"></div>
+      </div>
+      <div class="card">
+        <div class="picture"></div>
+        <div class="recette"></div>
+      </div>
+      <div class="card">
+        <div class="picture"></div>
+        <div class="recette"></div>
+      </div>
+      <div class="card">
+        <div class="picture"></div>
+        <div class="recette"></div>
+      </div>
+      <div class="card">
+        <div class="picture"></div>
+        <div class="recette"></div>
+      </div>
+    </div>
+  </main>
+</body>
+
+</html>

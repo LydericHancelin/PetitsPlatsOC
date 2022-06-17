@@ -1,0 +1,168 @@
+@import "color.scss";
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    h1 {
+        margin: 0;
+    }
+
+    a {
+        color: $c_orange;
+        text-decoration: none;
+        font-family: 'DM Sans';
+    }
+
+}
+
+#main {
+    margin: 5%;
+
+    >div {
+        margin-bottom: 1.25rem;
+    }
+}
+
+input {
+    height: 4.25rem;
+    border: none;
+    border-radius: 10px;
+}
+
+.search {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+
+    input {
+        width: 100%;
+        box-sizing: border-box;
+        background-color: $c_gray;
+        border: none;
+        border-radius: 10px;
+        height: 4.25rem;
+        padding: 0 1rem;
+        font-size: 1.25rem;
+        position: relative;
+    }
+
+    .loupe_img {
+        position: absolute;
+        transform: translateX(50%);
+        transform: translateY(50%);
+        top: 0;
+        right: 1.25rem;
+    }
+}
+
+.filters {
+    display: flex;
+
+    input {
+        box-sizing: border-box;
+        margin-right: .75rem;
+        color: $c_white;
+        padding: 1.25rem;
+        border: none;
+    }
+
+    .custom_selector {
+        height: 3.75rem;
+        background-color: $c_white;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+
+        &::after {
+            content: "";
+            display: block;
+            position: absolute;
+            right: 2rem;
+            width: 0.75rem;
+            height: 0.75rem;
+            border-bottom: 2px solid $c_white;
+            border-right: 2px solid $c_white;
+            transform: rotate(45deg);
+            transform-origin: center;
+            transition: transform 0.2s;
+        }
+    }
+
+    .selected_button::after {
+        transform: rotate(-135deg);
+    }
+
+    #ingredients {
+        background: $c_blue;
+    }
+
+    #appareils {
+        background: $c_green;
+    }
+
+    #ustensiles {
+        background: $c_orange;
+    }
+}
+
+.grid-cards {
+    width: 100%;
+    height: 115vh;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-between;
+    .card{
+        width: 32%;
+        height: 22.75rem;
+        border-radius: 25px;
+        margin-bottom: 2rem;
+        .picture{
+            background-color: $c_darkGray;
+            height: 11.25rem;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        .recette{
+            background-color: $c_gray;
+            height: 11.50rem;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            padding: 1.25rem;
+            .title{
+                display: flex;
+                justify-content: space-between;
+                h1{
+                    margin: 0;
+                    font-size: 1.25rem;
+                }
+                span{
+                    display: flex;
+                    align-items: center;
+                    font-weight: bold;
+                }
+                img{
+                    margin-right: .5rem;
+                }
+            }
+            .text{
+                display: flex;
+                padding: 1.25rem 0;
+                font-size: .75rem;
+                ul{
+                    width: 50%;
+                    list-style:none;
+                    padding: 0;
+                    margin: 0;
+                }
+                >div{
+                    width: 50%;
+                }
+            }
+        }
+    }
+}
