@@ -1,3 +1,4 @@
+import recipes from '/data/recipes';
 async function getRecipes () {
     // On récupère l'ensemble des données liées aux recettes dans le js
     const response = await fetch('/data/recipes.js')

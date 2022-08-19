@@ -1,4 +1,4 @@
-const recipes = JSON.stringify([
+const recipes = [
     {
         "id": 1,
         "name" : "Limonade de Coco",
@@ -1723,4 +1723,6 @@ const recipes = JSON.stringify([
         "appliance": "Four",
         "ustensils":["rouleau à patisserie","fouet"]
     }
-])
+]
+
+export default recipes;
