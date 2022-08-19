@@ -1,4 +1,4 @@
-const recipes = [
+const recipes = JSON.stringify([
     {
         "id": 1,
         "name" : "Limonade de Coco",
@@ -1723,4 +1723,4 @@ const recipes = [
         "appliance": "Four",
         "ustensils":["rouleau à patisserie","fouet"]
     }
-]
+])
