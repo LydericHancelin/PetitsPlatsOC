@@ -2,7 +2,7 @@
 <html lang="fr">
 
 <head>
-  <link href="css/main.min.css" rel="stylesheet" type="text/css" />
+  <link href="scss/main.css" rel="stylesheet" type="text/css" />
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,minimum-scale=1">
   <meta name="description" content="Les petits plats, site de recettes.">
@@ -24,8 +24,14 @@
       <input type="text" id="search" name="search" required minlength="4" maxlength="8" size="10" placeholder="Rechercher une recette">
       <img src="assets/images/loupe.svg" class="loupe_img" alt="Loupe"/>
     </div>
+    <div id="tagsContainer">
+
+    </div>
     <div class="filters">
-      <span class="custom_selector"><input type="search" id="ingredients" value="Ingredients"></span>
+      <div>
+        <span class="custom_selector"><input type="search" id="ingredients" value="Ingredients"></span>
+        <div id="ingredientsList"></div>
+      </div>
       <span class="custom_selector"><input type="search" id="appliances" value="Appareils"></span>
       <span class="custom_selector"><input type="search" id="ustensils" value="Ustensiles"></span>
     </div>

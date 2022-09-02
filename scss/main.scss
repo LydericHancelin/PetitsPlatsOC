@@ -58,13 +58,56 @@ input {
         right: 1.25rem;
     }
 }
+.ingredientTag{
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+    background-color: $c_blue;
+    border-radius: 5px;
+    color: $c_white;
+    height: 2.3rem;
+    width: 10rem;
+    font-weight: bold;
+    .cross{
+        border: 1px solid $c_white;
+        border-radius: 50%;
+        width: 1rem;
+        height: 1rem;
+        font-size: .5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        cursor: pointer;
+    }
+}
+#ingredientsList{
+    background-color: $c_blue;
+    display: none;
+    grid-template-columns: auto auto auto;
+    padding: 1.25rem;
+    border-radius: 5px;
+    >span{
+        padding: 1.25rem;
+        width: 10rem;
+        color: $c_white;
+    }
+}
+#tagsContainer{
+    display: flex;
+    >span{
+        margin-right: .75rem;
+    }
+}
 
 .filters {
     display: flex;
-
+    justify-content: flex-start;
+    >div{
+        margin-right: .75rem;
+    }
     input {
         box-sizing: border-box;
-        margin-right: .75rem;
         color: $c_white;
         padding: 1.25rem;
         border: none;
@@ -99,13 +142,14 @@ input {
 
     #ingredients {
         background: $c_blue;
+        display: flex;
     }
 
-    #appareils {
+    #appliances {
         background: $c_green;
     }
 
-    #ustensiles {
+    #ustensils {
         background: $c_orange;
     }
 }

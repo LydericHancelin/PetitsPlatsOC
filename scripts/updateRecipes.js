@@ -26,7 +26,7 @@ function displayRecipes(recipes) {
         const text = document.createElement('div')
         text.classList.add("text");
         const ul = document.createElement('ul')
-        ul.classList.add("ingrediants")
+        ul.classList.add("ingredients")
         element.ingredients.forEach(object => {
             const li = document.createElement('li')
             if (!!object.quantity) {
