@@ -1,27 +1,15 @@
-import recipes from '/data/recipes';
-async function getRecipes () {
-    // On récupère l'ensemble des données liées aux recettes dans le js
-    const response = await fetch('/data/recipes.js')
-    if (!response.ok) {
-      return []
-    }
-    console.log(response)
-    const body = await response.data
-    const recipes = body.recipes
-    return recipes
-}
+import recipes from '../data/recipes.js';
 
 const $searchBar = document.getElementById("search")
-const recipes = getRecipes()
 
-$searchBar.addEventListener("change", handleSearchBarChange)
+$searchBar.addEventListener("input", handleSearchBarChange)
 
 function handleSearchBarChange(e){
     if (canResearch(e.target.value)){
-        research(recipes, e.target.value);
+        research(recipes, e.target.value, [], []);
     }
 }
 
 function canResearch(searchValue){
-    searchValue.length >= 3
+    return searchValue.length >= 3
 }
