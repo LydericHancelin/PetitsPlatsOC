@@ -8,6 +8,7 @@ function research(recipes, searchValue, advancedFields, simpleFields){
         filteredRecipes = filterRecipesBySimpleTag(filteredRecipes, tag, tagValue)
     }
     console.log(filteredRecipes);
+    displayRecipes(filteredRecipes);
     return filteredRecipes;
 }
 

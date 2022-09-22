@@ -2,7 +2,7 @@
 <html lang="fr">
 
 <head>
-  <link href="scss/main.css" rel="stylesheet" type="text/css" />
+  <link href="css/main.min.css" rel="stylesheet" type="text/css" />
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,minimum-scale=1">
   <meta name="description" content="Les petits plats, site de recettes.">
@@ -12,17 +12,20 @@
 </head>
 
 <body>
+  <div id="overlay">
+  </div>
   <header>
     <a href="/">
-        <img src="assets/images/logo.svg" class="logo" alt="Logo"/>
-        <h1>Les petits plats</h1>
+      <img src="assets/images/logo.svg" class="logo" alt="Logo" />
+      <h1>Les petits plats</h1>
     </a>
   </header>
   <main id="main">
     <div class="search">
       <label for="search"></label>
-      <input type="text" id="search" name="search" required minlength="4" maxlength="8" size="10" placeholder="Rechercher une recette">
-      <img src="assets/images/loupe.svg" class="loupe_img" alt="Loupe"/>
+      <input type="text" id="search" name="search" required minlength="4" maxlength="8" size="10"
+        placeholder="Rechercher une recette">
+      <img src="assets/images/loupe.svg" class="loupe_img" alt="Loupe" />
     </div>
     <div id="tagsContainer">
 
@@ -32,8 +35,14 @@
         <span class="custom_selector"><input type="search" id="ingredients" value="Ingredients"></span>
         <div id="ingredientsList"></div>
       </div>
-      <span class="custom_selector"><input type="search" id="appliances" value="Appareils"></span>
-      <span class="custom_selector"><input type="search" id="ustensils" value="Ustensiles"></span>
+      <div>
+        <span class="custom_selector"><input type="search" id="appliances" value="Appliances"></span>
+        <div id="appliancesList"></div>
+      </div>
+      <div>
+        <span class="custom_selector"><input type="search" id="ustensils" value="Ustensils"></span>
+        <div id="ustensilsList"></div>
+      </div>
     </div>
     <div class="grid-cards">
       <div class="card">
@@ -42,7 +51,7 @@
           <div class="title">
             <h1>Limonade de Coco</h1>
             <span>
-              <img src="assets/images/timer.svg" class="timer_img" alt="Timer"/>
+              <img src="assets/images/timer.svg" class="timer_img" alt="Timer" />
               10min
             </span>
           </div>
@@ -86,7 +95,9 @@
   </main>
   <script type="module" src="scripts/searchBar.js"></script>
   <script type="module" src="scripts/searchTags.js"></script>
+  <script src="scripts/updateRecipes.js"></script>
   <script src="scripts/research.js"></script>
+  <script type="module" src="scripts/main.js"></script>
   <!-- <script src="scripts/researchTest.js"></script> -->
 </body>
 

@@ -17,7 +17,9 @@ header {
     }
 
 }
-
+body {
+    margin: 0;
+}
 #main {
     margin: 5%;
 
@@ -25,7 +27,15 @@ header {
         margin-bottom: 1.25rem;
     }
 }
-
+#overlay {
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 90;
+    background-color: $c_gray;
+    opacity: 0.5;
+}
 input {
     height: 4.25rem;
     border: none;
@@ -81,9 +91,46 @@ input {
         cursor: pointer;
     }
 }
+.ustensilTag{
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+    background-color: $c_orange;
+    border-radius: 5px;
+    color: $c_white;
+    height: 2.3rem;
+    width: 10rem;
+    font-weight: bold;
+    .cross{
+        border: 1px solid $c_white;
+        border-radius: 50%;
+        width: 1rem;
+        height: 1rem;
+        font-size: .5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        cursor: pointer;
+    }
+}
 #ingredientsList{
     background-color: $c_blue;
     display: none;
+    position: absolute;
+    grid-template-columns: auto auto auto;
+    padding: 1.25rem;
+    border-radius: 5px;
+    >span{
+        padding: 1.25rem;
+        width: 10rem;
+        color: $c_white;
+    }
+}
+#ustensilsList{
+    background-color: $c_orange;
+    display: none;
+    position: absolute;
     grid-template-columns: auto auto auto;
     padding: 1.25rem;
     border-radius: 5px;
@@ -103,6 +150,8 @@ input {
 .filters {
     display: flex;
     justify-content: flex-start;
+    position: relative;
+    z-index: 100;
     >div{
         margin-right: .75rem;
     }
@@ -112,7 +161,6 @@ input {
         padding: 1.25rem;
         border: none;
     }
-
     .custom_selector {
         height: 3.75rem;
         background-color: $c_white;
@@ -151,6 +199,7 @@ input {
 
     #ustensils {
         background: $c_orange;
+        display: flex;
     }
 }
 
@@ -162,7 +211,7 @@ input {
     justify-content:space-between;
     .card{
         width: 32%;
-        height: 22.75rem;
+        height: 30rem;
         border-radius: 25px;
         margin-bottom: 2rem;
         .picture{
@@ -173,7 +222,7 @@ input {
         }
         .recette{
             background-color: $c_gray;
-            height: 11.50rem;
+            height: 15rem;
             border-bottom-left-radius: 10px;
             border-bottom-right-radius: 10px;
             padding: 1.25rem;
@@ -205,6 +254,11 @@ input {
                 }
                 >div{
                     width: 50%;
+                    overflow: hidden;
+                }
+                .desc{
+                    height: 10rem;
+                    overflow: scroll;
                 }
             }
         }
