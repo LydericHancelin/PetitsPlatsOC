@@ -1,6 +1,6 @@
 const $gridcard = document.querySelector(".grid-cards")
 
-function displayRecipes(recipes) {
+export function displayRecipes(recipes) {
     $gridcard.innerHTML = ""
     recipes.forEach(element => {
         $gridcard.appendChild(getRecipeCardDOM(element))

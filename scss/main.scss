@@ -1,266 +1,265 @@
 @import "color.scss";
 
 header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+
+  h1 {
+    margin: 0;
+  }
+
+  a {
+    color: $c_orange;
+    text-decoration: none;
+    font-family: "DM Sans";
+  }
+}
+body {
+  margin: 0;
+}
+#main {
+  margin: 5%;
+
+  > div {
+    margin-bottom: 1.25rem;
+  }
+}
+#overlay {
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 90;
+  background-color: $c_gray;
+  opacity: 0.5;
+}
+input {
+  height: 4.25rem;
+  border: none;
+  border-radius: 10px;
+}
+
+.search {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+
+  input {
+    width: 100%;
+    box-sizing: border-box;
+    background-color: $c_gray;
+    border: none;
+    border-radius: 10px;
+    height: 4.25rem;
+    padding: 0 1rem;
+    font-size: 1.25rem;
+    position: relative;
+  }
+
+  .loupe_img {
+    position: absolute;
+    transform: translateX(50%);
+    transform: translateY(50%);
+    top: 0;
+    right: 1.25rem;
+  }
+}
+.ingredient-tag {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: $c_blue;
+  border-radius: 5px;
+  color: $c_white;
+  height: 2.3rem;
+  width: 10rem;
+  font-weight: bold;
+  .cross {
+    border: 1px solid $c_white;
+    border-radius: 50%;
+    width: 1rem;
+    height: 1rem;
+    font-size: 0.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
     text-align: center;
-
-    h1 {
-        margin: 0;
-    }
-
-    a {
-        color: $c_orange;
-        text-decoration: none;
-        font-family: 'DM Sans';
-    }
-
+    cursor: pointer;
+  }
 }
-body {
-    margin: 0;
-}
-#main {
-    margin: 5%;
-
-    >div {
-        margin-bottom: 1.25rem;
-    }
-}
-#overlay {
-    display: none;
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: 90;
-    background-color: $c_gray;
-    opacity: 0.5;
-}
-input {
-    height: 4.25rem;
-    border: none;
-    border-radius: 10px;
-}
-
-.search {
-    position: relative;
+.ustensil-tag {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: $c_orange;
+  border-radius: 5px;
+  color: $c_white;
+  height: 2.3rem;
+  width: 10rem;
+  font-weight: bold;
+  .cross {
+    border: 1px solid $c_white;
+    border-radius: 50%;
+    width: 1rem;
+    height: 1rem;
+    font-size: 0.5rem;
     display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-
-    input {
-        width: 100%;
-        box-sizing: border-box;
-        background-color: $c_gray;
-        border: none;
-        border-radius: 10px;
-        height: 4.25rem;
-        padding: 0 1rem;
-        font-size: 1.25rem;
-        position: relative;
-    }
-
-    .loupe_img {
-        position: absolute;
-        transform: translateX(50%);
-        transform: translateY(50%);
-        top: 0;
-        right: 1.25rem;
-    }
-}
-.ingredientTag{
-    display: flex;
-    justify-content:space-evenly;
+    justify-content: center;
     align-items: center;
-    background-color: $c_blue;
-    border-radius: 5px;
-    color: $c_white;
-    height: 2.3rem;
-    width: 10rem;
-    font-weight: bold;
-    .cross{
-        border: 1px solid $c_white;
-        border-radius: 50%;
-        width: 1rem;
-        height: 1rem;
-        font-size: .5rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        cursor: pointer;
-    }
+    text-align: center;
+    cursor: pointer;
+  }
 }
-.ustensilTag{
-    display: flex;
-    justify-content:space-evenly;
-    align-items: center;
-    background-color: $c_orange;
-    border-radius: 5px;
-    color: $c_white;
-    height: 2.3rem;
-    width: 10rem;
-    font-weight: bold;
-    .cross{
-        border: 1px solid $c_white;
-        border-radius: 50%;
-        width: 1rem;
-        height: 1rem;
-        font-size: .5rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        cursor: pointer;
-    }
-}
-#ingredientsList{
-    background-color: $c_blue;
-    display: none;
-    position: absolute;
-    grid-template-columns: auto auto auto;
+#ingredientsList {
+  background-color: $c_blue;
+  display: none;
+  position: absolute;
+  grid-template-columns: auto auto auto;
+  padding: 1.25rem;
+  border-radius: 5px;
+  > span {
     padding: 1.25rem;
-    border-radius: 5px;
-    >span{
-        padding: 1.25rem;
-        width: 10rem;
-        color: $c_white;
-    }
+    width: 10rem;
+    color: $c_white;
+  }
 }
-#ustensilsList{
-    background-color: $c_orange;
-    display: none;
-    position: absolute;
-    grid-template-columns: auto auto auto;
+#ustensilsList {
+  background-color: $c_orange;
+  display: none;
+  position: absolute;
+  grid-template-columns: auto auto auto;
+  padding: 1.25rem;
+  border-radius: 5px;
+  > span {
     padding: 1.25rem;
-    border-radius: 5px;
-    >span{
-        padding: 1.25rem;
-        width: 10rem;
-        color: $c_white;
-    }
+    width: 10rem;
+    color: $c_white;
+  }
 }
-#tagsContainer{
-    display: flex;
-    >span{
-        margin-right: .75rem;
-    }
+#tagsContainer {
+  display: flex;
+  > span {
+    margin-right: 0.75rem;
+  }
 }
 
 .filters {
+  display: flex;
+  justify-content: flex-start;
+  position: relative;
+  z-index: 100;
+  > div {
+    margin-right: 0.75rem;
+  }
+  input {
+    box-sizing: border-box;
+    color: $c_white;
+    padding: 1.25rem;
+    border: none;
+  }
+  .custom_selector {
+    height: 3.75rem;
+    background-color: $c_white;
     display: flex;
-    justify-content: flex-start;
+    align-items: center;
+    justify-content: space-between;
     position: relative;
-    z-index: 100;
-    >div{
-        margin-right: .75rem;
-    }
-    input {
-        box-sizing: border-box;
-        color: $c_white;
-        padding: 1.25rem;
-        border: none;
-    }
-    .custom_selector {
-        height: 3.75rem;
-        background-color: $c_white;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        position: relative;
 
-        &::after {
-            content: "";
-            display: block;
-            position: absolute;
-            right: 2rem;
-            width: 0.75rem;
-            height: 0.75rem;
-            border-bottom: 2px solid $c_white;
-            border-right: 2px solid $c_white;
-            transform: rotate(45deg);
-            transform-origin: center;
-            transition: transform 0.2s;
-        }
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      right: 2rem;
+      width: 0.75rem;
+      height: 0.75rem;
+      border-bottom: 2px solid $c_white;
+      border-right: 2px solid $c_white;
+      transform: rotate(45deg);
+      transform-origin: center;
+      transition: transform 0.2s;
     }
+  }
 
-    .selected_button::after {
-        transform: rotate(-135deg);
-    }
+  .selected_button::after {
+    transform: rotate(-135deg);
+  }
 
-    #ingredients {
-        background: $c_blue;
-        display: flex;
-    }
+  #ingredients {
+    background: $c_blue;
+    display: flex;
+  }
 
-    #appliances {
-        background: $c_green;
-    }
+  #appliances {
+    background: $c_green;
+  }
 
-    #ustensils {
-        background: $c_orange;
-        display: flex;
-    }
+  #ustensils {
+    background: $c_orange;
+    display: flex;
+  }
 }
 
 .grid-cards {
-    width: 100%;
-    height: 115vh;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content:space-between;
-    .card{
-        width: 32%;
-        height: 30rem;
-        border-radius: 25px;
-        margin-bottom: 2rem;
-        .picture{
-            background-color: $c_darkGray;
-            height: 11.25rem;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
-        }
-        .recette{
-            background-color: $c_gray;
-            height: 15rem;
-            border-bottom-left-radius: 10px;
-            border-bottom-right-radius: 10px;
-            padding: 1.25rem;
-            .title{
-                display: flex;
-                justify-content: space-between;
-                h1{
-                    margin: 0;
-                    font-size: 1.25rem;
-                }
-                span{
-                    display: flex;
-                    align-items: center;
-                    font-weight: bold;
-                }
-                img{
-                    margin-right: .5rem;
-                }
-            }
-            .text{
-                display: flex;
-                padding: 1.25rem 0;
-                font-size: .75rem;
-                ul{
-                    width: 50%;
-                    list-style:none;
-                    padding: 0;
-                    margin: 0;
-                }
-                >div{
-                    width: 50%;
-                    overflow: hidden;
-                }
-                .desc{
-                    height: 10rem;
-                    overflow: scroll;
-                }
-            }
-        }
+  width: 100%;
+  height: 115vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  .card {
+    width: 32%;
+    height: 30rem;
+    border-radius: 25px;
+    margin-bottom: 2rem;
+    .picture {
+      background-color: $c_darkGray;
+      height: 11.25rem;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
     }
+    .recette {
+      background-color: $c_gray;
+      height: 15rem;
+      border-bottom-left-radius: 10px;
+      border-bottom-right-radius: 10px;
+      padding: 1.25rem;
+      .title {
+        display: flex;
+        justify-content: space-between;
+        h1 {
+          margin: 0;
+          font-size: 1.25rem;
+        }
+        span {
+          display: flex;
+          align-items: center;
+          font-weight: bold;
+        }
+        img {
+          margin-right: 0.5rem;
+        }
+      }
+      .text {
+        display: flex;
+        padding: 1.25rem 0;
+        font-size: 0.75rem;
+        ul {
+          width: 50%;
+          list-style: none;
+          padding: 0;
+          margin: 0;
+        }
+        > div {
+          width: 50%;
+          overflow: hidden;
+        }
+        .desc {
+          height: 10rem;
+          overflow: scroll;
+        }
+      }
+    }
+  }
 }

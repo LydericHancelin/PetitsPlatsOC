@@ -1,4 +1,8 @@
-import recipes from '../data/recipes.js';
+import { addIngredientInCurrentList, addUstensilInCurrentList, getCurrentIngredients, getCurrentUstensils, getSearchBarValue, getTagsList, removeIngredientInCurrentList, removeUstensilInCurrentList } from "./page.js";
+
+import { getRecipes } from "../data/recipes.js";
+
+const RECIPES = getRecipes()
 
 const $ingredientSearch = document.getElementById("ingredients")
 const $applianceSearch = document.getElementById("appliances")
@@ -8,10 +12,7 @@ const ustensilsListHTMLelement = document.getElementById("ustensilsList")
 const tagsContainerHTMLelement = document.getElementById("tagsContainer")
 const overlay = document.getElementById("overlay")
 
-
-const fields = { ingredients: [], appliances: [], ustensils: "" }
 const globalIngredientsList = makeIngredientList();
-const currentIngredients = new Set();
 
 const globalUstensilsList = makeUstensilList();
 const currentUstensils = new Set();
@@ -22,19 +23,21 @@ $ingredientSearch.addEventListener("input", (e) => handleSearchIngredientInput(e
 // $applianceSearch.addEventListener("input", (e) => handleSearchInput(e.target.value , changedInput));
 $ustensilSearch.addEventListener("input", (e) => handleSearchUstensilInput(e.target.value));
 
-function handleSearchIngredientInput(enteredValue, changedInput) {
+function handleSearchIngredientInput(enteredValue) {
     const newIngredientsList = globalIngredientsList.filter(ingredient => ingredient.includes(enteredValue))
-    // calcul de la nouvelle donnée en créant la variable newfield
-    // met a jour les fields => fields[changedInput] = newField
     fillIngredientsList(newIngredientsList)
     updateHTMLingredientsList();
 }
-function handleSearchUstensilInput(enteredValue, changedInput) {
+
+function handleSearchUstensilInput(enteredValue) {
     const newUstensilsList = globalUstensilsList.filter(ustensil => ustensil.includes(enteredValue))
     fillUstensilsList(newUstensilsList)
     updateHTMLustensilsList();
-    // return;
-    return research(recipes, searchBarValue, advancedField, simpleField);
+}
+
+function makeSearch() {
+    const tags = [Array.from(globalIngredientsList), Array.from(globalUstensilsList)].flat();
+    //setTags(tags)
 }
 
 function closeModal() {
@@ -44,21 +47,28 @@ function closeModal() {
 }
 
 function makeIngredientList() {
-    const ingredientsListWithDoubleValues = recipes.map(recipe => recipe.ingredients).flat().map(ingredient => ingredient.ingredient.toLowerCase())
-    // console.log(Array.from(new Set(ingredientsListWithDoubleValues)));
-    return Array.from(new Set(ingredientsListWithDoubleValues));
+    const ingredientsListWithDoubleValues = RECIPES.reduce((ingredientsSet, { ingredients }) => {
+        ingredientsSet.add(...ingredients.map(({ ingredient: name }) => name.toLowerCase()))
+
+        return ingredientsSet
+    }, new Set())
+    return [...ingredientsListWithDoubleValues]
 }
 
 function makeUstensilList() {
-    const ustensilsListWithDoubleValues = recipes.map(recipe => recipe.ustensils).flat().map(ustensil => ustensil.toLowerCase())
-    // console.log(Array.from(new Set(ustensilsListWithDoubleValues)));
-    return Array.from(new Set(ustensilsListWithDoubleValues));
+    const ustensilsListWithDoubleValues = RECIPES.reduce((ustensilsSet, { ustensils })  =>  {
+        ustensilsSet.add(...ustensils.map((ustensils) => ustensils.toLowerCase()))
+    return ustensilsSet
+    }, new Set())
+    return [...ustensilsListWithDoubleValues]
 }
 
 function fillIngredientsList(ingredientList) {
     ingredientsListHTMLelement.innerHTML = ""
     ingredientList.forEach(ingredient => {
-        ingredientsListHTMLelement.appendChild(createClickableSpan(ingredient, () => { addIngredientTag(ingredient) }))
+        ingredientsListHTMLelement.appendChild(createClickableSpan(ingredient, () => {
+            addIngredientTag(ingredient)
+        }))
     });
 }
 
@@ -78,16 +88,8 @@ function createClickableSpan(text, handler) {
 
 function createTag(text, tagType) {
     const tag = document.createElement('span')
-    if (tagType === 'ingredient'){
-        tag.classList.add("ingredientTag")
-    }
-    else if (tagType === 'ustensil'){
-        tag.classList.add("ustensilTag")
-    }
-    else{
-        tag.classList.add("applianceTag")
-    }
     const closeSpan = document.createElement('span')
+    tag.classList.add(`${tagType}-tag`)
     closeSpan.innerText = "X"
     closeSpan.addEventListener("click", () => deleteTag(text))
     closeSpan.classList.add("cross")
@@ -97,41 +99,43 @@ function createTag(text, tagType) {
 }
 
 function addIngredientTag(ingredient) {
-    currentIngredients.add(ingredient)
+    addIngredientInCurrentList(ingredient)
     updateHTMLTags()
 }
 
 function addUstensilTag(ustensil) {
-    currentUstensils.add(ustensil)
+    addUstensilInCurrentList(ustensil)
     updateHTMLTags()
 }
 
 function updateHTMLTags() {
     tagsContainerHTMLelement.innerHTML = "";
-    currentIngredients.forEach(ingredient => {
+    getCurrentIngredients().forEach(ingredient => {
         tagsContainerHTMLelement.appendChild(createTag(ingredient, "ingredient"))
     })
-    currentUstensils.forEach(ustensil => {
+    getCurrentUstensils().forEach(ustensil => {
         tagsContainerHTMLelement.appendChild(createTag(ustensil, "ustensil"))
     })
-    $ingredientSearch.value="Ingredients";
-    $applianceSearch.value="Appliances";
-    $ustensilSearch.value="Ustensils";
+    $ingredientSearch.value = "";
+    $applianceSearch.value = "";
+    $ustensilSearch.value = "";
     closeModal();
 }
+
 function updateHTMLingredientsList() {
     ingredientsListHTMLelement.setAttribute('style', 'display:inline-grid')
     $ingredientSearch.setAttribute('style', 'width:100%')
-    overlay.style.display = "block"
 }
+
 function updateHTMLustensilsList() {
     ustensilsListHTMLelement.setAttribute('style', 'display:inline-grid')
     $ustensilSearch.setAttribute('style', 'width:100%')
+    // overlay.style.display = "block"
 }
 
 function deleteTag(tag) {
-    currentIngredients.delete(tag)
-    currentUstensils.delete(tag)
+    removeIngredientInCurrentList(tag)
+    removeUstensilInCurrentList(tag)
     updateHTMLTags()
 }
 

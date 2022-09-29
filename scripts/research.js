@@ -1,36 +1,51 @@
-function research(recipes, searchValue, advancedFields, simpleFields){
-    let filteredRecipes = recipes;
-    filteredRecipes = filterRecipesBySearchValue(filteredRecipes, searchValue);
-    for(const [tag, tagValues] of Object.entries(advancedFields)){
-        filteredRecipes = filterRecipesByComplexeTag(filteredRecipes, tag, tagValues)
-    }
-    for(const [tag, tagValue] of Object.entries(simpleFields)){
-        filteredRecipes = filterRecipesBySimpleTag(filteredRecipes, tag, tagValue)
-    }
-    console.log(filteredRecipes);
-    displayRecipes(filteredRecipes);
-    return filteredRecipes;
-}
+import { getRecipes } from '../data/recipes.js';
 
-function filterRecipesByComplexeTag(recipes, tag, tagValues){
-    return recipes.filter(recipe => tagValues.every(tagValue => recipe[tag].includes(tagValue)))
+function formatRecipes(recipes) {
+    return recipes.map(recipe => ({
+        id: recipe.id,
+        name: recipe.name,
+        description: recipe.description,
+        ingredients: recipe.ingredients.map(i => i.ingredient),
+        appliances: [recipe.appliance],
+        ustensils: recipe.ustensils
+    }))
 }
-function filterRecipesBySimpleTag(recipes, tag, tagValue){
-    if(!tagValue){
-        return recipes;
+export default function research(searchValue, tags) {
+    let filteredRecipes = formatRecipes(getRecipes());
+    if(!!searchValue){
+        filteredRecipes = filterRecipesBySearchValue(filteredRecipes, searchValue);
     }
-    return recipes.filter(recipe => recipe[tag] === tagValue)
+    if(!!tags){
+        filteredRecipes = filterRecipesByTags(filteredRecipes, tags);
+    }
+    return resetRecipes(filteredRecipes);
 }
-function filterRecipesBySearchValue(recipes, searchValue){
-    if (searchValue.length < 3){
+function resetRecipes(formatedRecipes){
+    return getRecipes().filter(recipe => formatedRecipes.find(formatedRecipe => formatedRecipe.id === recipe.id))
+}
+function filterRecipesBySearchValue(recipes, searchValue) {
+    if (searchValue.length < 3) {
         return recipes;
     }
     return recipes.filter(recipe => doesRecipeIncludeValue(recipe, searchValue))
 }
 
+function filterRecipesByTags(recipes, tags) {
+    return recipes.filter(recipe => {
+        return tags.every((tag) =>
+            recipe.ingredients.some((ingredient) => tag === ingredient.toLowerCase()) ||
+            recipe.appliances.some((appliances) => tag === appliances.toLowerCase()) ||
+            recipe.ustensils.some((ustensils) => tag === ustensils.toLowerCase())
+        )
+    })
+}
+
+
+
 function doesRecipeIncludeValue(recipe, searchValue) {
     return (
-        recipe.ingredients.some(ingredient => ingredient.ingredient.includes(searchValue)) ||
-        recipe.description.includes(searchValue) ||
-        recipe.name.includes(searchValue)
-)}
+        recipe.ingredients.some(ingredient => ingredient.toLowerCase().includes(searchValue.toLowerCase())) ||
+        recipe.description.includes(searchValue.toLowerCase()) ||
+        recipe.name.includes(searchValue.toLowerCase())
+    )
+}

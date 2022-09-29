@@ -1,7 +1,8 @@
-import recipes from "../data/recipes.js";
+import { displayRecipes } from './updateRecipes.js'
+import { getRecipes } from "../data/recipes.js";
 
 function init() {
-    displayRecipes(recipes)
+    displayRecipes(getRecipes())
 };
 
 init()

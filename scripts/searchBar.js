@@ -1,4 +1,4 @@
-import recipes from '../data/recipes.js';
+import {setsearchBarValue, updateRecipes} from './page.js'
 
 const $searchBar = document.getElementById("search")
 
@@ -6,7 +6,7 @@ $searchBar.addEventListener("input", handleSearchBarChange)
 
 function handleSearchBarChange(e){
     if (canResearch(e.target.value)){
-        research(recipes, e.target.value, [], []);
+        setsearchBarValue(e.target.value);
     }
 }
 

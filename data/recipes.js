@@ -1724,5 +1724,8 @@ const recipes = [
         "ustensils":["rouleau à patisserie","fouet"]
     }
 ]
+export function getRecipes(){
+    return recipes;
+}
 
 export default recipes;
