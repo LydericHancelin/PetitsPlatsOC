@@ -113,6 +113,29 @@ input {
     cursor: pointer;
   }
 }
+.appliance-tag {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: $c_green;
+  border-radius: 5px;
+  color: $c_white;
+  height: 2.3rem;
+  width: 10rem;
+  font-weight: bold;
+  .cross {
+    border: 1px solid $c_white;
+    border-radius: 50%;
+    width: 1rem;
+    height: 1rem;
+    font-size: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+  }
+}
 #ingredientsList {
   background-color: $c_blue;
   display: none;
@@ -128,6 +151,19 @@ input {
 }
 #ustensilsList {
   background-color: $c_orange;
+  display: none;
+  position: absolute;
+  grid-template-columns: auto auto auto;
+  padding: 1.25rem;
+  border-radius: 5px;
+  > span {
+    padding: 1.25rem;
+    width: 10rem;
+    color: $c_white;
+  }
+}
+#appliancesList {
+  background-color: $c_green;
   display: none;
   position: absolute;
   grid-template-columns: auto auto auto;
@@ -182,9 +218,8 @@ input {
       transition: transform 0.2s;
     }
   }
-
-  .selected_button::after {
-    transform: rotate(-135deg);
+  .opened::after{
+    transform: rotate(225deg);
   }
 
   #ingredients {

@@ -40,8 +40,6 @@ function filterRecipesByTags(recipes, tags) {
     })
 }
 
-
-
 function doesRecipeIncludeValue(recipe, searchValue) {
     return (
         recipe.ingredients.some(ingredient => ingredient.toLowerCase().includes(searchValue.toLowerCase())) ||

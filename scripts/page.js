@@ -8,12 +8,10 @@ const currentAppliances = new Set()
 export function getCurrentIngredients() {
     return [...currentIngredients];
 }
-
 export function addIngredientInCurrentList(ingredient){
     currentIngredients.add(ingredient);
     updateRecipes()
 }
-
 export function removeIngredientInCurrentList(ingredient){
     currentIngredients.delete(ingredient);
     updateRecipes()
@@ -22,14 +20,24 @@ export function removeIngredientInCurrentList(ingredient){
 export function getCurrentUstensils() {
     return [...currentUstensils];
 }
-
 export function addUstensilInCurrentList(ustensil){
     currentUstensils.add(ustensil);
     updateRecipes()
 }
-
 export function removeUstensilInCurrentList(ustensil){
     currentUstensils.delete(ustensil);
+    updateRecipes()
+}
+
+export function getCurrentAppliances() {
+    return [...currentAppliances];
+}
+export function addApplianceInCurrentList(appliance){
+    currentAppliances.add(appliance);
+    updateRecipes()
+}
+export function removeApplianceInCurrentList(appliance){
+    currentAppliances.delete(appliance);
     updateRecipes()
 }
 
@@ -45,12 +53,9 @@ export function setsearchBarValue(value){
     searchBarValue = value;
     updateRecipes()
 }
-
 export function getSearchBarValue() {
     return searchBarValue;
 }
-
 export function updateRecipes() {
-    console.log(getSearchBarValue(), getTagsList())
     displayRecipes(research(getSearchBarValue(), getTagsList()));
 }
