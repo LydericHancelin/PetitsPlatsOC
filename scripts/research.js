@@ -23,11 +23,18 @@ export default function research(searchValue, tags) {
 function resetRecipes(formatedRecipes){
     return getRecipes().filter(recipe => formatedRecipes.find(formatedRecipe => formatedRecipe.id === recipe.id))
 }
+
 function filterRecipesBySearchValue(recipes, searchValue) {
     if (searchValue.length < 3) {
         return recipes;
     }
-    return recipes.filter(recipe => doesRecipeIncludeValue(recipe, searchValue))
+    let filteredRecipes = []
+    for (let i=0; i < recipes.length; i++){
+        if(doesRecipeIncludeValue(recipes[i], searchValue)){
+            filteredRecipes.push(recipes[i])
+        }
+    }
+    return filteredRecipes;
 }
 
 function filterRecipesByTags(recipes, tags) {
@@ -41,9 +48,20 @@ function filterRecipesByTags(recipes, tags) {
 }
 
 function doesRecipeIncludeValue(recipe, searchValue) {
-    return (
-        recipe.ingredients.some(ingredient => ingredient.toLowerCase().includes(searchValue.toLowerCase())) ||
-        recipe.description.includes(searchValue.toLowerCase()) ||
-        recipe.name.includes(searchValue.toLowerCase())
-    )
+    for (let i=0; i<recipe.ingredients.length; i++){
+        if(recipe.ingredients[i].toLowerCase() == searchValue.toLowerCase()){
+            return true;
+        }
+    }
+    for (let i=0; i<recipe.description.length; i++){
+        if(recipe.description.toLowerCase().includes(searchValue.toLowerCase())){
+            return true;
+        }
+    }
+    for (let i=0; i<recipe.name.length; i++){
+        if(recipe.name.toLowerCase().includes(searchValue.toLowerCase())){
+            return true;
+        }
+    }
+   return false;
 }
