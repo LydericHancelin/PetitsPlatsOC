@@ -14,18 +14,18 @@ header {
     color: $c_orange;
     text-decoration: none;
     font-family: "DM Sans";
+    padding: 1.25rem;
   }
 }
+
 body {
   margin: 0;
 }
+
 #main {
   margin: 5%;
-
-  > div {
-    margin-bottom: 1.25rem;
-  }
 }
+
 #overlay {
   display: none;
   position: absolute;
@@ -35,6 +35,7 @@ body {
   background-color: $c_gray;
   opacity: 0.5;
 }
+
 input {
   height: 4.25rem;
   border: none;
@@ -46,6 +47,20 @@ input {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+  margin-bottom: 0;
+
+  [data-error]::after {
+    content: attr(data-error);
+    font-size: 0.4em;
+    color: #e54858;
+    display: block;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    text-align: left;
+    line-height: 0.3;
+    opacity: 0;
+    transition: 0.3s;
+  }
 
   input {
     width: 100%;
@@ -67,6 +82,7 @@ input {
     right: 1.25rem;
   }
 }
+
 .ingredient-tag {
   display: flex;
   justify-content: space-evenly;
@@ -77,6 +93,7 @@ input {
   height: 2.3rem;
   width: 10rem;
   font-weight: bold;
+
   .cross {
     border: 1px solid $c_white;
     border-radius: 50%;
@@ -90,6 +107,7 @@ input {
     cursor: pointer;
   }
 }
+
 .ustensil-tag {
   display: flex;
   justify-content: space-evenly;
@@ -100,6 +118,7 @@ input {
   height: 2.3rem;
   width: 10rem;
   font-weight: bold;
+
   .cross {
     border: 1px solid $c_white;
     border-radius: 50%;
@@ -113,6 +132,7 @@ input {
     cursor: pointer;
   }
 }
+
 .appliance-tag {
   display: flex;
   justify-content: space-evenly;
@@ -123,6 +143,7 @@ input {
   height: 2.3rem;
   width: 10rem;
   font-weight: bold;
+
   .cross {
     border: 1px solid $c_white;
     border-radius: 50%;
@@ -136,6 +157,7 @@ input {
     cursor: pointer;
   }
 }
+
 #ingredientsList {
   background-color: $c_blue;
   display: none;
@@ -143,12 +165,14 @@ input {
   grid-template-columns: auto auto auto;
   padding: 1.25rem;
   border-radius: 5px;
-  > span {
+
+  >span {
     padding: 1.25rem;
     width: 10rem;
     color: $c_white;
   }
 }
+
 #ustensilsList {
   background-color: $c_orange;
   display: none;
@@ -156,12 +180,14 @@ input {
   grid-template-columns: auto auto auto;
   padding: 1.25rem;
   border-radius: 5px;
-  > span {
+
+  >span {
     padding: 1.25rem;
     width: 10rem;
     color: $c_white;
   }
 }
+
 #appliancesList {
   background-color: $c_green;
   display: none;
@@ -169,15 +195,19 @@ input {
   grid-template-columns: auto auto auto;
   padding: 1.25rem;
   border-radius: 5px;
-  > span {
+
+  >span {
     padding: 1.25rem;
     width: 10rem;
     color: $c_white;
   }
 }
+
 #tagsContainer {
   display: flex;
-  > span {
+  margin-bottom: 1.25rem;
+
+  >span {
     margin-right: 0.75rem;
   }
 }
@@ -187,15 +217,19 @@ input {
   justify-content: flex-start;
   position: relative;
   z-index: 100;
-  > div {
+  margin-bottom: 1.25rem;
+
+  >div {
     margin-right: 0.75rem;
   }
+
   input {
     box-sizing: border-box;
     color: $c_white;
     padding: 1.25rem;
     border: none;
   }
+
   .custom_selector {
     height: 3.75rem;
     background-color: $c_white;
@@ -218,7 +252,8 @@ input {
       transition: transform 0.2s;
     }
   }
-  .opened::after{
+
+  .opened::after {
     transform: rotate(225deg);
   }
 
@@ -243,53 +278,64 @@ input {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+
   .card {
     width: 32%;
     height: 30rem;
     border-radius: 25px;
     margin-bottom: 2rem;
+
     .picture {
       background-color: $c_darkGray;
       height: 11.25rem;
       border-top-left-radius: 10px;
       border-top-right-radius: 10px;
     }
+
     .recette {
       background-color: $c_gray;
       height: 15rem;
       border-bottom-left-radius: 10px;
       border-bottom-right-radius: 10px;
       padding: 1.25rem;
+
       .title {
         display: flex;
         justify-content: space-between;
+
         h1 {
           margin: 0;
           font-size: 1.25rem;
         }
+
         span {
           display: flex;
           align-items: center;
           font-weight: bold;
         }
+
         img {
           margin-right: 0.5rem;
         }
       }
+
       .text {
         display: flex;
         padding: 1.25rem 0;
         font-size: 0.75rem;
+
         ul {
           width: 50%;
           list-style: none;
           padding: 0;
           margin: 0;
         }
-        > div {
+
+        >div {
           width: 50%;
           overflow: hidden;
         }
+
         .desc {
           height: 10rem;
           overflow: scroll;

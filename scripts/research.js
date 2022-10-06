@@ -1,3 +1,4 @@
+import {errorMessage} from "./page.js"
 import { getRecipes } from '../data/recipes.js';
 
 function formatRecipes(recipes) {
@@ -27,7 +28,13 @@ function filterRecipesBySearchValue(recipes, searchValue) {
     if (searchValue.length < 3) {
         return recipes;
     }
-    return recipes.filter(recipe => doesRecipeIncludeValue(recipe, searchValue))
+    return recipes.filter(recipe => {
+        if(doesRecipeIncludeValue(recipe, searchValue)){
+            (doesRecipeIncludeValue(recipe, searchValue))
+        }else{
+            errorMessage()
+        }
+    })
 }
 
 function filterRecipesByTags(recipes, tags) {

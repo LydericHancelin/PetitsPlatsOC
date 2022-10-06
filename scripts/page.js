@@ -1,3 +1,4 @@
+import { displayErrorMessage } from './searchBar.js';
 import { displayRecipes } from './updateRecipes.js'
 import research from './research.js';
 
@@ -58,4 +59,8 @@ export function getSearchBarValue() {
 }
 export function updateRecipes() {
     displayRecipes(research(getSearchBarValue(), getTagsList()));
+}
+
+export function errorMessage() {
+    displayErrorMessage()
 }
