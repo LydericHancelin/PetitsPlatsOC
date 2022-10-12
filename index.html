@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,minimum-scale=1">
   <meta name="description" content="Les petits plats, site de recettes.">
-  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="icon" type="image/png" href="presentation/favicon.png">
   <link href="https://fonts.googleapis.com/css?family=DM+Sans&display=swap" rel="stylesheet">
   <title>Les petits plats</title>
 </head>
@@ -16,17 +16,18 @@
   </div>
   <header>
     <a href="/">
-      <img src="assets/images/logo.svg" class="logo" alt="Logo" />
+      <img src="presentation/images/logo.svg" class="logo" alt="Logo" />
       <h1>Les petits plats</h1>
     </a>
   </header>
   <main id="main">
-    <div class="search">
+    <div class="search" id="search-div">
       <label for="search"></label>
       <input type="text" id="search" name="search" required minlength="4" maxlength="8" size="10"
         placeholder="Rechercher une recette">
-      <img src="assets/images/loupe.svg" class="loupe_img" alt="Loupe" />
+      <img src="presentation/images/loupe.svg" class="loupe_img" alt="Loupe" />
     </div>
+    <div id="error">Aucune recette ne correspond à votre critère... vous pouvez chercher « tarte aux pommes », « poisson », etc.</div>
     <div id="tagsContainer">
 
     </div>
@@ -51,7 +52,7 @@
           <div class="title">
             <h1>Limonade de Coco</h1>
             <span>
-              <img src="assets/images/timer.svg" class="timer_img" alt="Timer" />
+              <img src="presentation/images/timer.svg" class="timer_img" alt="Timer" />
               10min
             </span>
           </div>
@@ -93,12 +94,12 @@
       </div>
     </div>
   </main>
-  <script type="module" src="scripts/page.js"></script>
-  <script type="module" src="scripts/research.js"></script>
-  <script type="module" src="scripts/updateRecipes.js"></script>
-  <script type="module" src="scripts/main.js"></script>
-  <script type="module" src="scripts/searchBar.js"></script>
-  <script type="module" src="scripts/searchTags.js"></script>
+  <script type="module" src="presentation/page.js"></script>
+  <script type="module" src="core-logic/research.js"></script>
+  <script type="module" src="presentation/updateRecipes.js"></script>
+  <script type="module" src="./main.js"></script>
+  <script type="module" src="presentation/searchBar.js"></script>
+  <script type="module" src="presentation/searchTags.js"></script>
 </body>
 
 </html>

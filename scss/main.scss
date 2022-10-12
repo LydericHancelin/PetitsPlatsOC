@@ -48,20 +48,6 @@ input {
   flex-direction: column;
   box-sizing: border-box;
   margin-bottom: 0;
-
-  [data-error]::after {
-    content: attr(data-error);
-    font-size: 0.4em;
-    color: #e54858;
-    display: block;
-    margin-top: 7px;
-    margin-bottom: 7px;
-    text-align: left;
-    line-height: 0.3;
-    opacity: 0;
-    transition: 0.3s;
-  }
-
   input {
     width: 100%;
     box-sizing: border-box;
@@ -81,6 +67,9 @@ input {
     top: 0;
     right: 1.25rem;
   }
+}
+#error{
+  display: none;
 }
 
 .ingredient-tag {
